@@ -1,0 +1,25 @@
+Chapter 1 - What is Recusion?
+- To become comfortable with recursion, you need to be comfortable with the stack, which controls a program's
+flow of execution
+- A recursive thing has a self-referential definition
+- The program remembers which line of code called the fn and returns to it when the fn finishes execution
+- This is handle implicitly with the call stack
+- The program's call stack is a stack of frame objects
+    - The frame object contains information about a single fn call, including which line of code called the fn
+    so the execution when move back there when the fn returns
+- In general, these objects contain:
+    1) The return address, or the spot in the program where the execution should move when the fn returns
+    2) The args passed to the fn call
+    3) A set of local variables passed during the fn call
+- PLs can have separate local variables with the same name because they are kept in different frame objects
+- Every running program has a stack, and multithreaded programs have call stacks for each thread
+- Each stack gets allocated a certain memory, and when that is used up, a SO occurs
+- All recursive fns require at least one base case and at least one recursive case
+- Any code after the recursive case will still run, it just got put on hold 
+- Algos that involve tree-like data structures and require backtracking are especially suited for recursion
+    - These are 2 areas that I feel like I need more familiarity with
+- The call stack is handled implicitly by the program (which is confusing because this is not visible to the programmer)
+
+Chapter 2 - Recursion vs. Iteration
+- Any recursive code can be written as an iterative solution with a loop and a stack
+- And any iterative loop can be written with a recursive fn

@@ -23,3 +23,4 @@ flow of execution
 Chapter 2 - Recursion vs. Iteration
 - Any recursive code can be written as an iterative solution with a loop and a stack
 - And any iterative loop can be written with a recursive fn
+- Recursive fns use a call stack, so an iterative algo can replace this with a stack DS

@@ -24,3 +24,15 @@ Chapter 2 - Recursion vs. Iteration
 - Any recursive code can be written as an iterative solution with a loop and a stack
 - And any iterative loop can be written with a recursive fn
 - Recursive fns use a call stack, so an iterative algo can replace this with a stack DS
+- Branching points in trees look like roots of a smaller subtree
+- You take the problem and break it down into subproblems that are similar to the
+original problem, and then a base case is when that problem has been broken down
+far enough to have a trivial answer
+
+Chapter 3 - Classical Recursion Problems
+- Head-tail technique maps is essentially what we saw with OCaml that 
+made recursive problems really elegant in that it destructured the head
+and then the rest of the list in the tail on which we made recursive
+calculation on
+- Head gets combined with the recursively calculated value for the tail
+

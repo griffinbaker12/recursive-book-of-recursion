@@ -13,3 +13,13 @@ def reverseString(str):
         return str[-1] + reverseString(str[:-1])
 
 print(reverseString("hey"))
+
+def isPalindrome(str):
+    if len(str) == 0:
+        return True
+    head = str[0]
+    tail = str[-1]
+    mid = str[1:-1]
+    return head == tail and isPalindrome(mid)
+
+print(isPalindrome("racecar"))

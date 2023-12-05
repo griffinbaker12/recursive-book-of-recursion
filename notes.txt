@@ -35,4 +35,14 @@ made recursive problems really elegant in that it destructured the head
 and then the rest of the list in the tail on which we made recursive
 calculation on
 - Head gets combined with the recursively calculated value for the tail
+- 3 questions:
+    1) What is the base case?
+    2) What arguments are passed to the recursive function call?
+    3) How do these arguments become closer to the base case?
+- If you just make a single pass through the data with no backtracking, that is a good candidate for a loop
+- The hanoi problem is a good candidate because it has a tree-like structure where you move from, T -> B, L -> R
+in the tree
+- The leap of faith is still something that I don't quite get...does it mean that you define the fn in a way
+that should work for smaller cases, without "knowing" they will work explicitly? So you just have to define it
+in a way that calculates them correctly if it does
 

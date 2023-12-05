@@ -1,13 +1,24 @@
 import sys
 
-im = [list('..########################...........'),
-      list('..#......................#...#####...'),
-      list('..#..........########....#####...#...'),
-      list('..#..........#......#............#...'),
-      list('..#..........########.........####...'),
-      list('..######......................#......'),
-      list('.......#..#####.....###########......'),
-      list('.......####...#######................')]
+# im = [list('..########################...........'),
+#       list('..#......................#...#####...'),
+#       list('..#..........########....#####...#...'),
+#       list('..#..........#......#............#...'),
+#       list('..#..........########.........####...'),
+#       list('..######......................#......'),
+#       list('.......#..#####.....###########......'),
+#       list('.......####...#######................')]
+
+im = [
+    list("...##########...................................."),
+    list("...#........#....####..................##########"),
+    list("...#........#....#..#...############...#........#"),
+    list("...##########....#..#...#..........#...##.......#"),
+    list(".......#....#....####...#..........#....##......#"),
+    list(".......#....#....#......############.....##.....#"),
+    list(".......######....#........................##....#"),
+    list(".................####........####..........######")
+]
 
 HEIGHT = len(im)
 WIDTH = len(im[0])
@@ -82,6 +93,40 @@ def printImageIter(image, x, y, newChar, oldChar = None):
     
     return
 
-printImage(im)
-printImageIter(im, 3, 3, 'x')
-printImage(im)
+# printImage(im)
+# printImageIter(im, 3, 3, 'x')
+# printImage(im)
+
+pathing = im.copy()
+
+# I want to add the room to the visited set, as well as change the "." so I can see the steps this algo takes
+def checkIfRoom(image, seen, pathing, y, x):
+    if y < 0 or x < 0 or y >= HEIGHT or x >= WIDTH:
+        return False
+    if image[y][x] == "#" or seen[y][x]:
+        return True
+
+    seen[y][x] = True
+    pathing[y][x] = "o"
+
+    left = checkIfRoom(image, seen, pathing, y, x - 1) 
+    right = checkIfRoom(image, seen, pathing, y, x + 1) 
+    up = checkIfRoom(image, seen, pathing, y - 1, x) 
+    down = checkIfRoom(image, seen, pathing, y + 1, x) 
+
+    return left and right and up and down
+
+def countRooms(image):
+    roomCount = 0
+    seen = [[False for _ in range(WIDTH)] for _ in range(HEIGHT)]
+    
+    for y in range(2):
+        for x in range(5):
+            if not seen[y][x] and image[y][x] == ".":
+                if checkIfRoom(image, seen, pathing, y, x):
+                    roomCount += 1
+    
+    return roomCount
+
+print(countRooms(im))
+printImage(pathing)

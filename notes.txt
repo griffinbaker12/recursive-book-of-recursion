@@ -45,4 +45,15 @@ in the tree
 - The leap of faith is still something that I don't quite get...does it mean that you define the fn in a way
 that should work for smaller cases, without "knowing" they will work explicitly? So you just have to define it
 in a way that calculates them correctly if it does
+    - It is something like if you calculate the smaller cases correctly,
+    then the larger cases will also be correct (or so you take the faith)
+
+Chapter 4 - Backtracking 
+- A graph is a collection of nodes and edges, and a tree is a kind of graph
+- The graph is directed because its edges have one direction: from parent to child node
+- Acyclic because there are no loops from child nodes to their own ancestors 
+- Linked lists can be considered a sort of tree data structure
+- Pre and post order and DFS (go down the child nodes before exploring level)
+    - The difference is when the data is accessed: either before or after traversing the node's children
+- A simply connected, or perfect maze, is one that has exactly one path between any two points
 

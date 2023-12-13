@@ -7,6 +7,11 @@
 
 # so the questions are...
 
+def qs(items):
+    return qs([x for x in items[1:] if x <= items[0]]) + [items[0]] + qs([x for x in items if x > items[0]]) if items else []
+
+print(qs([1, 2, 5, 4, 5, 4, 4]))
+
 def quicksort(items):
     if len(items) <= 1:
         return items

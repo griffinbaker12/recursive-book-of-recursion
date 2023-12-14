@@ -57,3 +57,17 @@ Chapter 4 - Backtracking
     - The difference is when the data is accessed: either before or after traversing the node's children
 - A simply connected, or perfect maze, is one that has exactly one path between any two points
 
+Chapter 5 - D&C
+- A really cool part of these problems is that they can be farmed out to other computers
+- QS divides an array into 2 partitions based on a pivot value, and then partitions these partitions until
+it hits a base case, at which point it is in sorted order
+    - MS takes the opposite approach, first splitting the array, and then merging them into sorted order
+    afterwards
+- Karatsuba is used in low-level hardware programming where * is not available
+    - The key is that the mult is broken down into 3, instead of 4
+    - B/c, otherwise, if you were to FOIL / Distribute 18 * 17 = (10 + 8) * (10 + 7) + ... (3 more)
+        - Vs. only doing 3 multiplications
+        - FOIL is distribution...FOIL is dumb
+    - Mult 2 integers into mult of 3 smaller integers (instead of 4)
+- Also cool but multiplication by exponentiation comes out to be log n because you halve the exp.
+at each step

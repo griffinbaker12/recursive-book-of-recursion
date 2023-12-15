@@ -71,3 +71,15 @@ it hits a base case, at which point it is in sorted order
     - Mult 2 integers into mult of 3 smaller integers (instead of 4)
 - Also cool but multiplication by exponentiation comes out to be log n because you halve the exp.
 at each step
+
+Chapter 6 - Combos & Perms
+- Problems involving Cs & Ps are especially suited to recursion
+- N choose k refers to the number of possible combos (without rep) of k
+elements that can be selected from a set of n elements
+- Permutations have an ordering and use all of the elements from the set, 
+while combos have no order and use any number of els from the set
+- Order matters for permutations, but not combinations
+     - Once you choose an element, then you one less choice that you have 
+     to work with for the other elements, whereas with repetition, you 
+     can choose each element each time
+

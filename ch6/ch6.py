@@ -45,39 +45,70 @@ def all_lock_ps(chars, perm_len=None, prefix=""):
 # of a given length and then combine that with the suffix
 print(len(all_lock_ps('248JPB', 4)))
 
-# K: size of the combination
-def get_combos(str, k):
+# for the k-combos, you start at a point in the string, and pair it in all the ways you can with the chars at the end of the
+# string
+# know see why the leap of faith is useful; declarative in the sense that you tell the function
+# what you want, and then focus on how to combine those to get the final result
+# you trust the each recursive call will do its job, and your job is just to worry about combining
+# these results in these recursive calls to get the final outcome
+def k_combos(str, k):
+    # base case here    
     if k == 0:
         return [""]
-    elif len(str) == 0:
-        return []
-    
+    elif str == "":
+        return [""]
+
     hd = str[0]
     tl = str[1:]
 
-    combinations = []
-
-    # you have A as the head, and then you want all of the 1 combos of the tail, because then you can just add that head to the 
-    # result of the tail
-    
-    tail_combos = get_combos(tl, k-1)
-
-    print(tail_combos, 'the tcs are')
-
-    # there may be combos for the tail as well of the same length that do not involve the head
+    all_combos = []
+    tail_combos = k_combos(tl, k-1)
     for tc in tail_combos:
-        combinations.append(hd + tc)
-   
-    combinations.extend(get_combos(tl, k))
+        all_combos.append(hd + tc)
+         
+    all_combos.extend(k_combos(tl, k))
 
-    return combinations
+    return all_combos
 
-print(get_combos('ABC', 2))
+print(k_combos('ABC', 2))
 
-def get_balanced_paren(pairs, open_rem=None, close_rem=None, current=""):
-    if open_rem == None:
-        open_rem = pairs
-    if close_rem == None:
-        close_rem = pairs
+# takes an integer of the number of pairs of parens and returns a list of balanced
+# strings
+# can only add opening if you have a paren still to add
+# can only add a closing if you have added more open than closing
+def balanced_parens(num_pairs, openRem=None, closeRem=None, current=""):
+    if openRem is None:
+        openRem = num_pairs
+    if closeRem is None:
+        closeRem = num_pairs 
+
+    if openRem == 0 and closeRem == 0:
+        return [current]
     
+    results = []
+    if openRem > 0:
+        results.extend(balanced_parens(num_pairs, openRem-1, closeRem, current + "(")) 
+    if closeRem > openRem:
+        results.extend(balanced_parens(num_pairs, openRem, closeRem-1, current + ")"))
 
+    return results
+
+print(balanced_parens(2))
+
+def gen_ps(chars):
+    if chars == "":
+        return [""]
+
+    all_cs = []
+    hd = chars[0]
+    tl = chars[1:]
+
+    tl_cs = gen_ps(tl)
+    for tc in tl_cs:
+        all_cs.append(hd + tc)
+
+    all_cs += tl_cs
+
+    return all_cs
+
+print(gen_ps("ABC"))

@@ -43,7 +43,7 @@ def draw_inner_rectangles(x, y, w, h):
         # # draw inner across middle (only 2 because we already hollowed out the middle)
         draw_inner_rectangles(x, y + one_third_h, one_third_w, one_third_h)
         draw_inner_rectangles(x + two_thirds_w, y + one_third_h, one_third_w, one_third_h)
-        #
+        
         # draw inner across bottom
         draw_inner_rectangles(x, y, one_third_w, one_third_h)
         draw_inner_rectangles(x + one_third_w, y, one_third_w, one_third_h)
